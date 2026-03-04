@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Deep black background gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0a0f0a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+    <!-- Eye iris glow gradient -->
+    <radialGradient id="irisGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.15"/>
+      <stop offset="60%" stop-color="#00cc66" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#003322" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Pupil core gradient -->
+    <radialGradient id="pupilGrad" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+    <!-- Green glow filter -->
+    <filter id="greenGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Outer ring glow -->
+    <filter id="outerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Scan line gradient -->
+    <linearGradient id="scanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00ff88" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Clip circle for inner content -->
+    <clipPath id="innerClip">
+      <circle cx="256" cy="256" r="190"/>
+    </clipPath>
+
+    <!-- Snake eye slit gradient -->
+    <radialGradient id="slitGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff66"/>
+      <stop offset="40%" stop-color="#00cc55"/>
+      <stop offset="100%" stop-color="#004422"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="url(#bgGrad)"/>
+
+  <!-- Outer hex-ring segments (intelligence aesthetic) -->
+  <g filter="url(#outerGlow)" opacity="0.6">
+    <!-- 12 tick marks around outer ring -->
+    <g stroke="#00ff88" stroke-width="2" opacity="0.5">
+      <line x1="256" y1="28" x2="256" y2="52"/>
+      <line x1="256" y1="460" x2="256" y2="484"/>
+      <line x1="28" y1="256" x2="52" y2="256"/>
+      <line x1="460" y1="256" x2="484" y2="256"/>
+      <!-- Diagonal ticks -->
+      <line x1="97"  y1="97"  x2="113" y2="113"/>
+      <line x1="399" y1="399" x2="415" y2="415"/>
+      <line x1="415" y1="97"  x2="399" y2="113"/>
+      <line x1="113" y1="399" x2="97"  y2="415"/>
+    </g>
+
+    <!-- Outer ring arc (dashed) -->
+    <circle cx="256" cy="256" r="234"
+            fill="none"
+            stroke="#00ff88"
+            stroke-width="1"
+            stroke-dasharray="6 4"
+            opacity="0.25"/>
+
+    <!-- Primary ring -->
+    <circle cx="256" cy="256" r="220"
+            fill="none"
+            stroke="#00ff88"
+            stroke-width="1.5"
+            opacity="0.45"/>
+  </g>
+
+  <!-- Eye shape — almond / serpent eye -->
+  <g filter="url(#greenGlow)">
+    <!-- Eye white / sclera - dark with faint green tint -->
+    <ellipse cx="256" cy="256" rx="175" ry="88"
+             fill="#050f08"
+             stroke="#00cc55"
+             stroke-width="1.5"
+             opacity="0.9"/>
+
+    <!-- Iris ring -->
+    <circle cx="256" cy="256" r="70"
+            fill="url(#irisGlow)"
+            stroke="#00ff88"
+            stroke-width="1.5"
+            opacity="0.9"/>
+
+    <!-- Inner iris detail rings -->
+    <circle cx="256" cy="256" r="58"
+            fill="none"
+            stroke="#00cc66"
+            stroke-width="0.75"
+            opacity="0.5"
+            stroke-dasharray="3 3"/>
+
+    <circle cx="256" cy="256" r="46"
+            fill="none"
+            stroke="#00aa44"
+            stroke-width="0.75"
+            opacity="0.4"/>
+
+    <!-- Pupil — vertical slit (serpent) -->
+    <ellipse cx="256" cy="256" rx="18" ry="62"
+             fill="url(#pupilGrad)"/>
+
+    <!-- Pupil inner core reflection -->
+    <ellipse cx="248" cy="238" rx="5" ry="12"
+             fill="#0d1a10"
+             opacity="0.6"/>
+
+    <!-- Corneal highlight - small white glint top-left -->
+    <ellipse cx="228" cy="228" rx="7" ry="4"
+             fill="#ffffff"
+             opacity="0.12"
+             transform="rotate(-30 228 228)"/>
+
+    <ellipse cx="222" cy="224" rx="3" ry="1.5"
+             fill="#ffffff"
+             opacity="0.25"
+             transform="rotate(-30 222 224)"/>
+
+    <!-- Scan line overlay (surveillance aesthetic) -->
+    <ellipse cx="256" cy="256" rx="175" ry="88"
+             fill="url(#scanGrad)"
+             opacity="0.12"
+             clip-path="url(#innerClip)"/>
+  </g>
+
+  <!-- Crosshair / targeting reticle -->
+  <g stroke="#00ff88" stroke-width="1" opacity="0.55" fill="none">
+    <!-- Horizontal line segments (broken at eye center) -->
+    <line x1="70"  y1="256" x2="160" y2="256" opacity="0.5"/>
+    <line x1="352" y1="256" x2="442" y2="256" opacity="0.5"/>
+    <!-- Vertical line segments -->
+    <line x1="256" y1="130" x2="256" y2="192" opacity="0.5"/>
+    <line x1="256" y1="320" x2="256" y2="382" opacity="0.5"/>
+
+    <!-- Corner brackets top-left -->
+    <path d="M148 168 L148 148 L168 148" stroke-width="2"/>
+    <!-- Corner brackets top-right -->
+    <path d="M344 148 L364 148 L364 168" stroke-width="2"/>
+    <!-- Corner brackets bottom-left -->
+    <path d="M148 344 L148 364 L168 364" stroke-width="2"/>
+    <!-- Corner brackets bottom-right -->
+    <path d="M364 344 L364 364 L344 364" stroke-width="2"/>
+
+    <!-- Small center dot indicator -->
+    <circle cx="256" cy="256" r="3" fill="#00ff88" stroke="none" opacity="0.8"/>
+    <circle cx="256" cy="256" r="6" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Binary / hex data strip — top -->
+  <g font-family="monospace" font-size="9" fill="#00ff88" opacity="0.18" text-anchor="middle">
+    <text x="256" y="78">0F A3 4C 1B 8E 2D 9F 55 3A 7C B0 E1 6D 24 91</text>
+  </g>
+
+  <!-- Binary / hex data strip — bottom -->
+  <g font-family="monospace" font-size="9" fill="#00ff88" opacity="0.18" text-anchor="middle">
+    <text x="256" y="444">FF 00 C8 5E 72 AB 1D 36 0A 49 BD 83 CF 17 E0</text>
+  </g>
+
+  <!-- SNAKEEYE label — bottom arc text simulation via positioned text -->
+  <g font-family="'Courier New', monospace" fill="#00ff88" opacity="0.7" text-anchor="middle">
+    <text x="256" y="420"
+          font-size="13"
+          letter-spacing="8"
+          font-weight="bold">SNAKEEYE</text>
+  </g>
+
+  <!-- Version / classification tag -->
+  <g font-family="'Courier New', monospace" fill="#00ff88" opacity="0.35" text-anchor="middle">
+    <text x="256" y="100" font-size="8" letter-spacing="4">[ NETWORK INTELLIGENCE ]</text>
+  </g>
+
+  <!-- Subtle scan lines across whole icon -->
+  <rect x="0" y="0" width="512" height="512" rx="0"
+        fill="none"
+        stroke="none"
+        opacity="0"/>
+  <!-- Horizontal scan lines via pattern simulation -->
+  <g opacity="0.04" stroke="#00ff88" stroke-width="0.5">
+    <line x1="0" y1="64"  x2="512" y2="64"/>
+    <line x1="0" y1="128" x2="512" y2="128"/>
+    <line x1="0" y1="192" x2="512" y2="192"/>
+    <line x1="0" y1="320" x2="512" y2="320"/>
+    <line x1="0" y1="384" x2="512" y2="384"/>
+    <line x1="0" y1="448" x2="512" y2="448"/>
+  </g>
+
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#060d06"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <radialGradient id="iris2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#001a0d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="slit2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#050e07"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <filter id="glow2" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="64" cy="64" r="64" fill="url(#bg2)"/>
+
+  <!-- Outer ring -->
+  <circle cx="64" cy="64" r="58" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.4" stroke-dasharray="4 3"/>
+  <circle cx="64" cy="64" r="52" fill="none" stroke="#00cc55" stroke-width="1" opacity="0.6"/>
+
+  <!-- Tick marks -->
+  <g stroke="#00ff88" stroke-width="1.5" opacity="0.5">
+    <line x1="64" y1="5"   x2="64" y2="14"/>
+    <line x1="64" y1="114" x2="64" y2="123"/>
+    <line x1="5"  y1="64"  x2="14" y2="64"/>
+    <line x1="114" y1="64" x2="123" y2="64"/>
+  </g>
+
+  <!-- Eye sclera -->
+  <ellipse cx="64" cy="64" rx="44" ry="22" fill="#030c06" stroke="#00cc55" stroke-width="1.2" filter="url(#glow2)"/>
+
+  <!-- Iris -->
+  <circle cx="64" cy="64" r="17" fill="url(#iris2)" stroke="#00ff88" stroke-width="1.2"/>
+  <circle cx="64" cy="64" r="13" fill="none" stroke="#00aa44" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.6"/>
+
+  <!-- Serpent slit pupil -->
+  <ellipse cx="64" cy="64" rx="4.5" ry="15" fill="url(#slit2)"/>
+
+  <!-- Highlight glint -->
+  <ellipse cx="57" cy="58" rx="2" ry="1" fill="#ffffff" opacity="0.2" transform="rotate(-25 57 58)"/>
+
+  <!-- Crosshair arms -->
+  <g stroke="#00ff88" stroke-width="0.8" opacity="0.5">
+    <line x1="16" y1="64" x2="38" y2="64"/>
+    <line x1="90" y1="64" x2="112" y2="64"/>
+    <line x1="64" y1="30" x2="64" y2="48"/>
+    <line x1="64" y1="80" x2="64" y2="98"/>
+  </g>
+
+  <!-- Corner brackets -->
+  <g stroke="#00ff88" stroke-width="1.5" fill="none" opacity="0.7">
+    <path d="M28 28 L28 20 L36 20"/>
+    <path d="M92 20 L100 20 L100 28"/>
+    <path d="M28 100 L28 108 L36 108"/>
+    <path d="M100 100 L100 108 L92 108"/>
+  </g>
+
+  <!-- Center dot -->
+  <circle cx="64" cy="64" r="1.5" fill="#00ff88" opacity="0.9"/>
+
+</svg>
